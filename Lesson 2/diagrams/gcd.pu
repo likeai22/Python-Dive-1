@@ -1,0 +1,14 @@
+@startuml gcd
+start
+if (a == 0) then (true)
+  :return b;
+elseif (b == 0) then (true)
+  :return a;
+endif
+while (b)
+  :q = a // b;
+  :a, b = b, a - q * b;
+endwhile
+:return a;
+stop
+@enduml
