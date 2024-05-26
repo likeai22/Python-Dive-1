@@ -172,7 +172,7 @@ def check_random_solutions(n=8, count=4):
             valid_solutions.append(d)
 
     for solution in valid_solutions:
-        print_solution_from_positions(solution)
+        print_solution(solution, data_type="positions")
 
 def is_valid_solution(d):
     """Проверяет, является ли случайная расстановка ферзей корректной."""
@@ -181,27 +181,6 @@ def is_valid_solution(d):
             return False
     return True
 
-def print_solution_from_positions(d, *args):
-    """Печатает решение в виде строки и координат из списка позиций."""
-    if not 'string' in args:
-        n = len(d)
-        board = [['.' for _ in range(n)] for _ in range(n)]
-        for i in range(n):
-            board[d[i] - 1][i] = 'Q'
-        for row in board:
-            print(' '.join(row))
-        print()
-    print(f"Решение (строка) {' '.join(map(str, d))}")
-
-def print_solution(board):
-    """Печатает решение в виде строки и координат."""
-    for row in board:
-        print(" ".join('Q' if x else '.' for x in row))
-    print()
-    coordinates = solution_to_positions(board)
-    print(f"Row {' '.join(map(str, coordinates))}")
-    
-    
 def print_solution(data, data_type="board"):
     """Печатает решение в виде строки и координат."""
     if data_type == "board":
@@ -262,7 +241,7 @@ def main():
         print("4. Генерировать случайные расстановки и проверить их")
         print("5. Проверить свои пары чисел, каждое число от 1 до 8 - координаты 8 ферзей")
         print("6. Выход")
-        choice = input("Выберите опцию (1-7): ")
+        choice = input("Выберите опцию (1-6): ")
 
         if choice == '1':
             all_solutions, _ = solve_n_queens()
