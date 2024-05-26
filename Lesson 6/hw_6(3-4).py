@@ -12,13 +12,6 @@ def horn(d, n):
         s2 = s2 * fn + float(d[n1i])
     return min(s1, s2)
 
-def is_safe(d, k):
-    """Проверяет, можно ли безопасно поставить ферзя в позицию k."""
-    for j in range(k):
-        if d[k] == d[j] or abs(d[k] - d[j]) == k - j:
-            return False
-    return True
-
 def solve_n_queens_util(board, col):
     """Рекурсивно решает задачу о восьми ферзях."""
     if col >= len(board):
@@ -26,7 +19,7 @@ def solve_n_queens_util(board, col):
 
     solutions = []
     for i in range(len(board)):
-        if is_safe_board(board, i, col):
+        if is_safe(board, row=i, col=col):
             board[i][col] = 1
             solutions += solve_n_queens_util(board, col + 1)
             board[i][col] = 0
@@ -34,19 +27,33 @@ def solve_n_queens_util(board, col):
     return solutions
 
 
-def is_safe_board(board, row, col):
-    """Проверяет, можно ли безопасно поставить ферзя в позицию (row, col) на доске."""
-    for i in range(col):
-        if board[row][i] == 1:
-            return False
 
-    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
+def is_safe(board, row=None, col=None, positions=None, k=None):
+    """Проверяет, можно ли безопасно поставить ферзя.
+    
+    Аргументы:
+    board -- матрица доски
+    row, col -- позиция ферзя на доске
+    positions -- список позиций ферзей
+    k -- индекс ферзя в списке позиций
+    """
+    if board is not None:
+        for i in range(col):
+            if board[row][i] == 1:
+                return False
 
-    for i, j in zip(range(row, len(board), 1), range(col, -1, -1)):
-        if board[i][j] == 1:
-            return False
+        for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+            if board[i][j] == 1:
+                return False
+
+        for i, j in zip(range(row, len(board), 1), range(col, -1, -1)):
+            if board[i][j] == 1:
+                return False
+
+    elif positions is not None and k is not None:
+        for j in range(k):
+            if positions[k] == positions[j] or abs(positions[k] - positions[j]) == k - j:
+                return False
 
     return True
 
@@ -104,7 +111,7 @@ def solve_n_queens_horn(n=8):
 
         if d[i] < n:
             d[i] += 1
-            if is_safe(d, i):
+            if is_safe(None, positions=d, k=i):
                 i += 1
             else:
                 continue
@@ -177,7 +184,7 @@ def check_random_solutions(n=8, count=4):
 def is_valid_solution(d):
     """Проверяет, является ли случайная расстановка ферзей корректной."""
     for k in range(len(d)):
-        if not is_safe(d, k):
+        if not is_safe(None, positions=d, k=k):
             return False
     return True
 
