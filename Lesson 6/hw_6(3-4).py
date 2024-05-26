@@ -270,6 +270,8 @@ def main():
             break
         else:
             print("Неверный выбор. Попробуйте снова.")
+            
+    return 0
 
 if __name__ == "__main__":
     sys.exit(main())
