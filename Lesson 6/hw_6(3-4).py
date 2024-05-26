@@ -26,8 +26,6 @@ def solve_n_queens_util(board, col):
 
     return solutions
 
-
-
 def is_safe(board, row=None, col=None, positions=None, k=None):
     """Проверяет, можно ли безопасно поставить ферзя.
     
