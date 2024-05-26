@@ -1,4 +1,6 @@
 import random
+import sys
+
 
 def horn(d, n):
     """Реализация схемы Горнера."""
@@ -270,4 +272,4 @@ def main():
             print("Неверный выбор. Попробуйте снова.")
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())
