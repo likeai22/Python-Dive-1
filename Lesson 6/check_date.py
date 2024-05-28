@@ -41,12 +41,11 @@ def arg_parser():
     return parser
 
 def main():
-    # python hw_2.py --date  01.01.2024
+    # python check_date.py --date  01.01.2024
     print('Клиент модуля с проверкой даты')
     parser = arg_parser()
     args = parser.parse_args()
     print(args.date)
-    return 0
 
 if __name__ == '__main__':
     main()
