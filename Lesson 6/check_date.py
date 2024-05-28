@@ -37,7 +37,7 @@ def arg_parser():
                         "--date", 
                         help="Дата в формате DD.MM.YYYY", 
                         required=True, 
-                        type=date_is_true)
+                        type=str)
     return parser
 
 def main():
@@ -45,7 +45,10 @@ def main():
     print('Клиент модуля с проверкой даты')
     parser = arg_parser()
     args = parser.parse_args()
-    print(args.date)
+    is_valid_date = date_is_true(args.date)
+    flag = "" if is_valid_date else "не "
+    
+    print(f"Дата введена {flag}правильно: {args.date}")
 
 if __name__ == '__main__':
     main()
