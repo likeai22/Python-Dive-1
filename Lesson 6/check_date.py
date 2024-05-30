@@ -1,7 +1,7 @@
 import argparse
 
 
-__all__ = ['date_is_true']
+__all__ = ["date_is_true"]
 
 
 def _is_leap(year: int) -> bool:
@@ -9,7 +9,7 @@ def _is_leap(year: int) -> bool:
 
 
 def date_is_true(data: str) -> bool:
-    day, month, year = list(map(int, data.split('.')))
+    day, month, year = list(map(int, data.split(".")))
     check_days = {
         1: 31,
         2: 29 if _is_leap(year) else 28,
@@ -22,7 +22,7 @@ def date_is_true(data: str) -> bool:
         9: 30,
         10: 31,
         11: 30,
-        12: 31
+        12: 31,
     }
     max_day = check_days.get(month)
     if not max_day or (year > 9999 or year < 1) or (day > max_day or day < 1):
@@ -30,25 +30,26 @@ def date_is_true(data: str) -> bool:
     else:
         return True
 
+
 # Парсер аргументов коммандной строки
 def arg_parser():
     parser = argparse.ArgumentParser(description="Проверка даты.")
-    parser.add_argument ("-d", 
-                        "--date", 
-                        help="Дата в формате DD.MM.YYYY", 
-                        required=True, 
-                        type=str)
+    parser.add_argument(
+        "-d", "--date", help="Дата в формате DD.MM.YYYY", required=True, type=str
+    )
     return parser
+
 
 def main():
     # python check_date.py --date  01.01.2024
-    print('Клиент модуля с проверкой даты')
+    print("Клиент модуля с проверкой даты")
     parser = arg_parser()
     args = parser.parse_args()
     is_valid_date = date_is_true(args.date)
     flag = "" if is_valid_date else "не "
-    
+
     print(f"Дата введена {flag}правильно: {args.date}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
