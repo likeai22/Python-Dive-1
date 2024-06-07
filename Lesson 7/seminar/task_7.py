@@ -9,7 +9,7 @@ import send2trash
 from .task_6 import gen_different_files
 
 
-def sort_files(path: str | Path, groups: dict[str : list[str]] = None) -> None:
+def sort_files(path: str | Path, groups: dict[str: list[str]] = None) -> None:
     if not groups:
         groups = {
             Path("video"): ["avi", "mov", "mk4", "mkv"],
@@ -41,4 +41,4 @@ if __name__ == "__main__":
         mkv=6,
         png=3,
     )
-    sort_files(Path(str(Path.cwd())))
+    sort_files(Path.cwd())
