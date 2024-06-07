@@ -11,21 +11,17 @@ from pathlib import Path
 from random import choices, randint
 from string import ascii_lowercase, digits
 
-import send2trash
-
 
 def gen_files(
-    ext: str,
-    min_name: int = 6,
-    max_name: int = 30,
-    min_size: int = 256,
-    max_size: int = 4096,
-    file_count: int = 42,
+        ext: str,
+        min_name: int = 6,
+        max_name: int = 30,
+        min_size: int = 256,
+        max_size: int = 4096,
+        file_count: int = 42,
 ) -> None:
     data_folder = Path("data")
-    if data_folder.exists():
-        send2trash.send2trash(data_folder)
-    data_folder.mkdir()
+    data_folder.mkdir(parents=True, exist_ok=True)
 
     for _ in range(file_count):
         name = "".join(
@@ -33,7 +29,7 @@ def gen_files(
         )
         data = bytes(randint(0, 255) for _ in range(randint(min_size, max_size)))
 
-        with open(rf"{data_folder}\{name}.{ext}", "wb") as f:
+        with open(Path.cwd() / f"{data_folder}" / f"{name}.{ext}", "wb") as f:
             f.write(data)
 
 

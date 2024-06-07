@@ -8,14 +8,16 @@ from pathlib import Path
 from random import choices, randint
 from string import ascii_lowercase, digits
 
+__all__ = ["gen_different_files", ]
 
-def gen_files(
-    ext: str,
-    min_name: int = 6,
-    max_name: int = 30,
-    min_size: int = 256,
-    max_size: int = 4096,
-    file_count: int = 42,
+
+def _gen_files(
+        ext: str,
+        min_name: int = 6,
+        max_name: int = 30,
+        min_size: int = 256,
+        max_size: int = 4096,
+        file_count: int = 42,
 ) -> None:
     for _ in range(file_count):
         while True:
@@ -36,13 +38,11 @@ def gen_different_files(directory: str | Path, **kwargs) -> None:
         directory.mkdir(parents=True)
     os.chdir(directory)
     for ext, numbers in kwargs.items():
-        gen_files(ext, file_count=numbers)
+        _gen_files(ext, file_count=numbers)
 
 
 if __name__ == "__main__":
     data_folder = Path("data")
-    # if data_folder.exists():
-    #     send2trash.send2trash(data_folder)
     gen_different_files(
         data_folder,
         txt=2,

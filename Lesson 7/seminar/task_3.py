@@ -14,8 +14,10 @@
 from pathlib import Path
 from typing import TextIO
 
+__all__ = ["sum_files", ]
 
-def read_or_begin(fd: TextIO) -> str:
+
+def _read_or_begin(fd: TextIO) -> str:
     text = fd.readline()
     if text == "":
         fd.seek(0)
@@ -32,8 +34,8 @@ def sum_files(f1_name: str | Path, f2_name: str | Path, res_file: str | Path) ->
         len_f1 = sum(1 for _ in f1)
         len_f2 = sum(1 for _ in f2)
         for _ in range(max(len_f1, len_f2)):
-            name = read_or_begin(f1)
-            num_int, num_fl = read_or_begin(f2).split(" | ")
+            name = _read_or_begin(f1)
+            num_int, num_fl = _read_or_begin(f2).split(" | ")
             mult = int(num_int) * float(num_fl)
             (
                 f_res.write(f"{name.lower()} {-mult}\n")
