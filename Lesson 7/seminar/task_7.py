@@ -32,6 +32,7 @@ if __name__ == "__main__":
     data_folder = Path("data")
     if data_folder.exists():
         send2trash.send2trash(data_folder)
+    data_folder.mkdir()
     gen_different_files(
         data_folder,
         avi=2,
