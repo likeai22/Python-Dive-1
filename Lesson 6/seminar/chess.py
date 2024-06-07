@@ -2,7 +2,7 @@ import argparse
 import random
 import sys
 
-__all__ = ["user_interactive", ]
+__all__ = ["chess_user_interactive", ]
 
 
 def _horn(d, n):
@@ -302,11 +302,11 @@ def user_interactive():
             print("Неверный выбор. Попробуйте снова.")
 
 
-def main():
+def chess_user_interactive():
     print("Клиентский модуль задачи о 8 ферзях.")
     user_interactive()
     return 0
 
 
 if __name__ == "__main__":
-    sys.exit(main())
+    sys.exit(chess_user_interactive())

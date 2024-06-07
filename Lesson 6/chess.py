@@ -1,4 +1,4 @@
-from seminar import user_interactive
+from seminar import chess_user_interactive
 
 if __name__ == "__main__":
-    user_interactive()
+    chess_user_interactive()

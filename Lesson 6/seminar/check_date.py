@@ -1,6 +1,6 @@
 import argparse
 
-__all__ = ["main"]
+__all__ = ["check_data"]
 
 
 def _is_leap(year: int) -> bool:
@@ -39,7 +39,7 @@ def _arg_parser():
     return parser
 
 
-def main():
+def check_data():
     # python check_date.py --date  01.01.2024
     print("Клиент модуля с проверкой даты")
     parser = _arg_parser()
@@ -51,4 +51,4 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    check_data()
