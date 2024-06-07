@@ -5,7 +5,7 @@
 # Количество файлов для каждого расширения различно.
 # Внутри используйте вызов функции из прошлой задачи.
 
-from task_4 import gen_files
+from .task_4 import gen_files
 
 
 def num_files(**kwargs) -> None:

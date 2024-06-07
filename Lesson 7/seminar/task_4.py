@@ -13,12 +13,12 @@ from string import ascii_lowercase, digits
 
 
 def gen_files(
-        ext: str,
-        min_name: int = 6,
-        max_name: int = 30,
-        min_size: int = 256,
-        max_size: int = 4096,
-        file_count: int = 42,
+    ext: str,
+    min_name: int = 6,
+    max_name: int = 30,
+    min_size: int = 256,
+    max_size: int = 4096,
+    file_count: int = 42,
 ) -> None:
     data_folder = Path("data")
     data_folder.mkdir(parents=True, exist_ok=True)

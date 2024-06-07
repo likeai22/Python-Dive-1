@@ -8,7 +8,7 @@
 # словаря в удобном для чтения виде.
 # Для формирования результатов используйте генераторное выражение.
 
-from task_4 import puzzles
+from .task_4 import puzzles
 
 __all__ = ["puzzles_storage", "show_results"]
 _data = {}

@@ -7,7 +7,7 @@ def _is_leap(year: int) -> bool:
     return year % 4 == 0 and year % 100 != 0 or year % 400 == 0
 
 
-def date_is_true(data: str) -> bool:
+def _date_is_true(data: str) -> bool:
     day, month, year = list(map(int, data.split(".")))
     check_days = {
         1: 31,
@@ -44,7 +44,7 @@ def main():
     print("Клиент модуля с проверкой даты")
     parser = _arg_parser()
     args = parser.parse_args()
-    is_valid_date = date_is_true(args.date)
+    is_valid_date = _date_is_true(args.date)
     flag = "" if is_valid_date else "не "
 
     print(f"Дата введена {flag}правильно: {args.date}")

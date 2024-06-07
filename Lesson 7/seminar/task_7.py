@@ -6,10 +6,10 @@ import os
 from pathlib import Path
 import send2trash
 
-from task_6 import gen_different_files
+from .task_6 import gen_different_files
 
 
-def sort_files(path: str | Path, groups: dict[str: list[str]] = None) -> None:
+def sort_files(path: str | Path, groups: dict[str : list[str]] = None) -> None:
     if not groups:
         groups = {
             Path("video"): ["avi", "mov", "mk4", "mkv"],

@@ -5,7 +5,7 @@
 # Функция в цикле вызывает загадывающую функцию, чтобы передать ей все
 # свои загадки.
 
-from task_4 import puzzles
+from .task_4 import puzzles
 
 
 def puzzles_storage():

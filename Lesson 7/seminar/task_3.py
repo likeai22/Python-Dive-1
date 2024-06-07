@@ -14,7 +14,9 @@
 from pathlib import Path
 from typing import TextIO
 
-__all__ = ["sum_files", ]
+__all__ = [
+    "sum_files",
+]
 
 
 def _read_or_begin(fd: TextIO) -> str:
